@@ -10,6 +10,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { ItemsComponent } from './order/items/items.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
     AppComponent,
     LoginComponent,
     MenuComponent,
-    RegisterComponent
+    RegisterComponent,
+    ItemsComponent
   ],
   imports: [
     BrowserModule,
