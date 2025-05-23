@@ -1,9 +1,9 @@
 .login-container {
   display: flex;
-  height: 100vh;
+  height: 97.8vh;
   width: 100%;
   font-family: 'Segoe UI', sans-serif;
-
+  
   .login-left {
     flex: 1;
     background-color:#ededed;
@@ -21,7 +21,7 @@
     align-items: center;
     justify-content: center;
 
-    .login-form {
+   form, .login-form {
       width: 80%;
       max-width: 400px;
       display: flex;
@@ -47,13 +47,13 @@
       }
 
       input[type='text'],
-      input[type='password'] {
+      input[type='password'],input[type='email'] {
         width: 100%;
         padding: 10px;
         border: none;
         margin-top: 5px;
         border-radius: 5px;
-        background-color: #efb9a2;
+        background-color: #e8f0fe;
       }
 
       .options {

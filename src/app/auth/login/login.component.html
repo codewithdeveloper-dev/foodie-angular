@@ -2,35 +2,73 @@
   <div class="login-left">
     <img src="/assets/food.svg" alt="Login Graphic" />
   </div>
-  <div class="login-right">
-    <div class="login-form">
-      <h2>Welcome Back !</h2>
-      <p>login to continue</p>
-
-      <label>Username</label>
-      <input type="text" placeholder="Enter your username" />
-
-      <label>Password</label>
-      <input type="password" placeholder="Enter your password" />
-
-      <div class="options">
-        <label><input type="checkbox" /> Remember me</label>
-        <a href="#">Forget Password?</a>
+  <div class="login-right" *ngIf="!Login">
+    <form [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
+      <div class="login-form">
+        <h2>Welcome Back !</h2>
+        <p>login to continue</p>
+  
+        <label>Username</label>
+        <input formControlName="UserName" type="text" placeholder="Enter your username" />
+  
+         <label>Email</label>
+        <input formControlName="Email" type="email" placeholder="Enter your Email" />
+  
+        <label>Password</label>
+        <input formControlName="password" type="password" placeholder="Enter your password" />
+  
+        <div class="options">
+          <label><input type="checkbox" /> Remember me</label>
+          <a href="#">Forget Password?</a>
+        </div>
+  
+        <button type="submit">Login now</button>
+  
+        <p class="or-login">Or Login with</p>
+        <div class="social-icons">
+          <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-linkedin-in"></i>
+          <i class="fab fa-google"></i>
+        </div>
+  
+        <p class="signup-text">
+          Don’t have an account?
+          <a (click)="Login = true" style="color: black;">Sign In</a>
+        </p>
       </div>
-
-      <button>Login now</button>
-
-      <p class="or-login">Or Login with</p>
-      <div class="social-icons">
-        <i class="fab fa-facebook-f"></i>
-        <i class="fab fa-linkedin-in"></i>
-        <i class="fab fa-google"></i>
+    </form>
+  </div>
+   <div class="login-right" *ngIf="Login">
+    <form [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
+      <div class="login-form">
+        <h2>Welcome Back !</h2>
+        <p>login to continue</p>
+  
+         <label>Email</label>
+        <input formControlName="Email" type="email" placeholder="Enter your Email" />
+  
+        <label>Password</label>
+        <input formControlName="password" type="password" placeholder="Enter your password" />
+  
+        <div class="options">
+          <label><input type="checkbox" /> Remember me</label>
+          <a href="#">Forget Password?</a>
+        </div>
+  
+        <button type="submit">Login now</button>
+  
+        <p class="or-login">Or Login with</p>
+        <div class="social-icons">
+          <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-linkedin-in"></i>
+          <i class="fab fa-google"></i>
+        </div>
+  
+        <p class="signup-text">
+          Don’t have an account?
+          <a (click)="Login = false" style="color: black;">Sign Up</a>
+        </p>
       </div>
-
-      <p class="signup-text">
-        Don’t have an account?
-        <a href="#">Sign Up</a>
-      </p>
-    </div>
+    </form>
   </div>
 </div>
