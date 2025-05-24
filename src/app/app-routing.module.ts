@@ -12,7 +12,6 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {path:'admin/menu',component: MenuComponent},
   {path:"order/items",component:ItemsComponent},
-  { path: '**', redirectTo: 'home' },
   { path: 'admin/RestaurantAdd', component: AddRestaurantComponent },
   {path:'admin/RestaurantItemAdd',component:AddRestaurantItemComponent},
   { path: '**', redirectTo: 'home' },

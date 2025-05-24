@@ -16,9 +16,12 @@ export class RestaurantServiceService {
   getRestaurantList() {
     return this.http.get(this.baseUrl + 'getRestaurant');
   }
+  updateRestaurant(restauranntData: any, updateIdValue : any) {
+    return this.http.put(this.baseUrl + 'updateResaurant/'+updateIdValue,restauranntData);
+  }
 
-  deleteRestaurant(id : any){
-    debugger
-    return this.http.delete(this.baseUrl + 'deleteResaurant/'+id);
+  deleteRestaurant(id: any) {
+    debugger;
+    return this.http.delete(this.baseUrl + 'deleteResaurant/' + id);
   }
 }

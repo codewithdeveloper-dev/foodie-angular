@@ -21,7 +21,7 @@ export class AddRestaurantComponent {
   updateimgsource : any = '';
   nextValueLength: number | undefined;
   restaurantimgDisable = false;
-
+  updateIdValue : number | undefined;
   ngOnInit(): void {
     this.getRestaurantList();
   }
@@ -53,7 +53,7 @@ export class AddRestaurantComponent {
       cuisineType: this.RestaurantForm.controls.cuisineType.value,
       address: this.RestaurantForm.controls.companyAddress.value,
       phoneNumber: this.RestaurantForm.controls.phoneNumber.value,
-      restaurantUrl: this.catEncode,
+      restaurantUrl: this.updateimgsource,
       email: this.RestaurantForm.controls.email.value,
     };
     console.log(restauranntData);
@@ -70,6 +70,7 @@ export class AddRestaurantComponent {
                'user_avatar'
              ) as HTMLInputElement;
              clearfile.value = '';
+             this.updateimgsource = '';
            }
          },
          error: (error: any) => {
@@ -78,6 +79,27 @@ export class AddRestaurantComponent {
        });
     }else if (this.restaurantStaus == 'Edit') {
       alert("updated")
+       console.log(restauranntData);
+        this.restaurantService.updateRestaurant(restauranntData, this.updateIdValue).subscribe({
+          next:(next:any)=>{
+            if (next.status == true) {
+             alert(next.message);
+             this.RestaurantForm.reset();
+             this.restaurantList = [];
+             this.getRestaurantList();
+             const clearfile = document.getElementById(
+               'user_avatar'
+             ) as HTMLInputElement;
+             clearfile.value = '';
+             this.updateimgsource = '';
+           }
+         },
+         error: (error: any) => {
+           console.log(error);
+         },
+          
+        })
+     
     }
      
   }
@@ -127,6 +149,7 @@ export class AddRestaurantComponent {
     this.restaurantimgDisable = false;
     this.updateimgsource = this.restaurantList[index].restaurant_url;
     this.restaurantStaus='Edit';
+    this.updateIdValue = this.restaurantList[index].restaurantId;
   }
 
   deleteRest(index: any) {
@@ -139,6 +162,7 @@ export class AddRestaurantComponent {
             alert(next.message);
             this.restaurantList = [];
             this.getRestaurantList();
+            this.updateimgsource='';  
           } else {
             alert(next.error);
           }
