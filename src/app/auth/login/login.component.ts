@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../service/auth.service';
 import { EnvironmentService } from 'src/app/environment.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,13 +12,20 @@ import { EnvironmentService } from 'src/app/environment.service';
 })
 export class LoginComponent implements OnInit {
 
-  LoginForm!: FormGroup
+  Register!: FormGroup;
+  LoginForm!:FormGroup
+  
 
   constructor(private fb: FormBuilder, private toastr: ToastrService, private Service: AuthService,
-    private envir: EnvironmentService ) {
+    private envir: EnvironmentService,private Router:Router ) {
 
-    this.LoginForm = this.fb.group({
+    this.Register = this.fb.group({
       UserName: ['', [Validators.required]],
+      Email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]]
+    });
+
+     this.LoginForm = this.fb.group({
       Email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]]
     });
@@ -29,11 +37,11 @@ export class LoginComponent implements OnInit {
 
   Login:boolean = true
   onSubmit() {
-    if (this.LoginForm.valid) {
+    if (this.Register.valid) {
       const json = {
-        UserName: this.LoginForm.controls['UserName'].value,
-        Email: this.LoginForm.controls['Email'].value,
-        password: this.encrypt(this.LoginForm.controls['password'].value,this.envir.getsecretkey()),
+        UserName: this.Register.controls['UserName'].value,
+        Email: this.Register.controls['Email'].value,
+        password: this.encrypt(this.Register.controls['password'].value,this.envir.getsecretkey()),
         RollId: 3
       }
 
@@ -53,6 +61,36 @@ export class LoginComponent implements OnInit {
     } else {
       this.toastr.error('Fill in the blanks', 'Foody')
     }
+  }
+
+  onSubmitLogin(){
+    debugger
+    if (this.LoginForm.valid) {
+      const json = {
+        Email: this.LoginForm.controls['Email'].value,
+        password: this.encrypt(this.LoginForm.controls['password'].value,this.envir.getsecretkey()),
+      }
+
+      this.Service.Login(json).subscribe({
+        next: (data) => {
+          debugger
+          if(data.token){
+            this.toastr.success('Login Successfully', 'Foody');
+            this.Router.navigateByUrl('/home')
+          }
+        },
+        error: (error) => {
+          this.toastr.error(error.message, 'Foody')
+        },
+        complete: () => {
+
+        }
+      }
+      );
+    } else {
+      this.toastr.error('Fill in the blanks', 'Foody')
+    }
+
   }
 
   encrypt(text:any, key:any) {

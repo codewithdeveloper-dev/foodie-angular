@@ -3,7 +3,7 @@
     <img src="/assets/food.svg" alt="Login Graphic" />
   </div>
   <div class="login-right" *ngIf="!Login">
-    <form [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="Register" (ngSubmit)="onSubmit()">
       <div class="login-form">
         <h2>Welcome Back !</h2>
         <p>login to continue</p>
@@ -39,7 +39,7 @@
     </form>
   </div>
    <div class="login-right" *ngIf="Login">
-    <form [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="LoginForm" (ngSubmit)="onSubmitLogin()">
       <div class="login-form">
         <h2>Welcome Back !</h2>
         <p>login to continue</p>

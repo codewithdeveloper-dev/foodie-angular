@@ -14,7 +14,8 @@ import { ItemsComponent } from './order/items/items.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule} from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavbarComponent } from './foody-common/navbar/navbar.component'
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     LoginComponent,
     MenuComponent,
     RegisterComponent,
-    ItemsComponent
+    ItemsComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
