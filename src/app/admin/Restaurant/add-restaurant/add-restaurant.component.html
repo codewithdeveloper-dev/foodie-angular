@@ -147,17 +147,37 @@
       >
     </div>
      <div class="relative z-0 w-full mb-5 group">
-    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="user_avatar">Restaurant Image</label>
+    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="user_avatar">Restaurant Image
+ <div class="rounded-full flex items-center bg-slate-800 py-0.5 pr-2.5 pl-1.5 border border-transparent text-sm text-white transition-all shadow-sm" id="restaurant_img" [hidden] = 'restaurantimgDisable'>
+  <div class="h-5 w-5 mr-2">
+    <img
+      alt="Tania Andrew"
+      src="{{updateimgsource}}" alt="Image"
+      class="h-full w-full rounded-full object-cover object-center"
+    />
+  </div>
+  
+  Image change 
+</div>
+      
+    </label>
+   
   <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="user_avatar_help" (change)="getFile($event)" id="user_avatar" type="file">
     </div>  
   </div>
    <div class="relative z-0 w-full mt-2 flex justify-end  group">
-  <button
-    type="submit"
-    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto ms-28 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 " (click)="saveRestFormData()"
-  >
-    Submit
-  </button>
+    <!-- <button
+      type="submit"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto ms-28 px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 " (click)="saveRestFormData()"
+    >
+      Submit
+    </button> -->
+
+  <button  class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800" (click)="saveRestFormData()">
+<span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
+Submit
+</span>
+</button>
   </div>
 </form>
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg m-4 p-2 pb-5">
@@ -245,7 +265,7 @@
                 </th>
             </tr>
         </thead>
-        <tbody  *ngFor="let restList of restaurantList">
+        <tbody  *ngFor="let restList of restaurantList; let i = index" >
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="w-4 p-4">
                     <div class="flex items-center" >
@@ -272,9 +292,20 @@
                    <img src="{{restList.restaurant_url}}"  alt="Image" width="70" height="60" />
                 </td>
                 <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 p-2 hover:underline">Edit</a>
+                    <!-- <a href="#" (click)="updateRest(i)" class="font-medium text-blue-600 dark:text-blue-500 p-2 hover:underline">Edit</a> -->
+
+                    <button class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800">
+<span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent" (click)="restaurantEdit(i)">
+Edit
+</span>
+</button>
                     
-                    <a href="#" class="font-medium text-blue-600 dark p-2 text-red-500  hover:underline">Delete</a>
+                  <button class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-red-800" (click)="deleteRest(i)">
+<span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-transparent group-hover:dark:bg-transparent">
+Delete
+</span>
+</button>
+                    <!-- <a  class="font-medium text-blue-600 dark p-2 text-red-500  hover:underline">Delete</a> -->
                 </td>
             </tr>
             

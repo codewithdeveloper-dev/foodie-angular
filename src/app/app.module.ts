@@ -15,6 +15,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { AddRestaurantComponent } from './admin/Restaurant/add-restaurant/add-restaurant.component';
+import { AddRestaurantItemComponent } from './admin/Restaurant/add-restaurant-item/add-restaurant-item.component';
+
 
 @NgModule({
   declarations: [
@@ -22,11 +25,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     LoginComponent,
     MenuComponent,
     RegisterComponent,
-    ItemsComponent
+    ItemsComponent,
+    AddRestaurantComponent,
+    AddRestaurantItemComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
@@ -34,10 +41,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
+    BrowserAnimationsModule,
     HttpClientModule,
-    BrowserAnimationsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
