@@ -17,7 +17,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AddRestaurantComponent } from './admin/Restaurant/add-restaurant/add-restaurant.component';
 import { AddRestaurantItemComponent } from './admin/Restaurant/add-restaurant-item/add-restaurant-item.component';
-
+import { NavbarComponent } from './foody-common/navbar/navbar.component'
 
 @NgModule({
   declarations: [
@@ -28,6 +28,7 @@ import { AddRestaurantItemComponent } from './admin/Restaurant/add-restaurant-it
     ItemsComponent,
     AddRestaurantComponent,
     AddRestaurantItemComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

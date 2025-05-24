@@ -18,4 +18,11 @@ export class AuthService {
     return this.http.post(this.Url.getauthurl() + 'register', json,httpOptions);
   }
 
+   Login(json:any):Observable<any> {
+    const httpOptions = {
+      headers: { 'Content-Type': 'application/json','Access-Control-Allow-Origin': '*' },
+    };
+    return this.http.post(this.Url.getauthurl() + 'login', json,httpOptions);
+  }
+
 }
