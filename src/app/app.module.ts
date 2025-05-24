@@ -18,6 +18,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AddRestaurantComponent } from './admin/Restaurant/add-restaurant/add-restaurant.component';
 import { AddRestaurantItemComponent } from './admin/Restaurant/add-restaurant-item/add-restaurant-item.component';
 import { NavbarComponent } from './foody-common/navbar/navbar.component'
+import { MaterialModule } from './material-module';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { DashComponent } from './foody-common/dash/dash.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -28,10 +38,12 @@ import { NavbarComponent } from './foody-common/navbar/navbar.component'
     ItemsComponent,
     AddRestaurantComponent,
     AddRestaurantItemComponent,
-    NavbarComponent
+    NavbarComponent,
+    DashComponent,
   ],
   imports: [
     BrowserModule,
+    MaterialModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -44,6 +56,14 @@ import { NavbarComponent } from './foody-common/navbar/navbar.component'
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     HttpClientModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
