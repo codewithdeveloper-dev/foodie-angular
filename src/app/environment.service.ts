@@ -2,20 +2,22 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EnvironmentService {
-
   production() {
     return environment.production;
   }
 
-  getauthurl(){
-    return environment.AuthUrl
+  getauthurl() {
+    return environment.AuthUrl;
   }
 
-  getsecretkey(){
-    return environment.secretKey
+  getsecretkey() {
+    return environment.secretKey;
   }
 
+  getResUrl(){
+    return environment.resUrl;
+  }
 }
